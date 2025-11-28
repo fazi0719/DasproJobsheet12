@@ -26,12 +26,30 @@ public class Kafe06 {
         System.out.println(" ============================== ");
         System.out.println(" Silahkan pilih menu yang anda inginkan. ");
     }
-    public static int hitungTotalHarga (int pilihanMenu, int banyakItem ) {
+    public static int hitungTotalHarga06 (int pilihanMenu, int banyakItem, String kodePromo ) {
         int [] hargaItems = {15000, 20000, 22000,12000, 10000, 18000};
         
         int hargaTotal = hargaItems[pilihanMenu-1]*banyakItem;
-        return hargaTotal;
-    }
+        
+    
+      double diskon = 0;
+    if (kodePromo.equals("diskon 50%")) {
+    diskon = hargaTotal * 0.50;
+    System.out.println("Anda mendapat diskon 50%! (Rp. " + diskon + ")");
+    } else if (kodePromo.equals("diskon 30%")) {
+    diskon = hargaTotal * 0.30; 
+    System.out.println("Anda mendapat diskon 30%! (Rp. " + diskon + ")");
+    } else {
+    System.out.println("Kode promo " + kodePromo + "invalid ");
+    diskon = 0;
+    
+}
+    
+double totalBayarAkhir = hargaTotal - diskon;
+return (int) totalBayarAkhir;
+
+}
+
 
            public static void main(String[] args) {
           Menu("Budi", true, "diskon 30%"); // "diskon 30%" tidak boleh ada spasi jika ada mka hasil output tidak valid
@@ -42,8 +60,8 @@ public class Kafe06 {
             System.out.print("\nMasukkan jumlah item yang ingin dipesan: ");
             int banyakItem = sc.nextInt();
             
-            int totalHarga = hitungTotalHarga(pilihanMenu, banyakItem);
-            System.out.println(" Total harga untuk pesanan anda: Rp. " + totalHarga);
+            int totalHarga = hitungTotalHarga06 (pilihanMenu, banyakItem, "diskon 30%");
+            System.out.println(" Total harga untuk pesanan anda: Rp. " + totalHarga );
       
 }
 }
